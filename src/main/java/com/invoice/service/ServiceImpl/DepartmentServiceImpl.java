@@ -10,17 +10,9 @@ import org.springframework.stereotype.Service;
 public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     private DepartmentMapper departmentMapper;
+
     @Override
-    public Department getDepartmentByName(String username) {
+    public Department getDepartmentByUserName(String username) {
         return departmentMapper.getDepartmentByUserName(username);
-    }
-    @Override
-    public void addDepartment(Department department) {
-
-    }
-
-    @Override
-    public void deleteDepartment(Department department) {
-
     }
 }

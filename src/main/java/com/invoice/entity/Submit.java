@@ -7,40 +7,45 @@ import java.util.Date;
 
 @Repository
 public class Submit {
-  private long submitId;
+  private Integer submit_id;
 
-  private Date submitDate;
-  private long departmentId;
+  private Date submit_date;
+  private Integer department_id;
   private String reason;
-  public long getSubmitId() {
-    return submitId;
+  private Double sum;
+
+  public Double getSum() {
+    return sum;
   }
 
-  public void setSubmitId(long submitId) {
-    this.submitId = submitId;
-  }
-
-
-
-
-
-  public Date getSubmitDate() {
-    return submitDate;
-  }
-
-  public void setSubmitDate(java.sql.Timestamp submitDate) {
-    this.submitDate = submitDate;
+  public void setSum(Double sum) {
+    this.sum = sum;
   }
 
 
-  public long getDepartmentId() {
-    return departmentId;
+  public Integer getSubmit_id() {
+    return submit_id;
   }
 
-  public void setDepartmentId(long departmentId) {
-    this.departmentId = departmentId;
+  public void setSubmit_id(Integer submit_id) {
+    this.submit_id = submit_id;
   }
 
+  public Date getSubmit_date() {
+    return submit_date;
+  }
+
+  public void setSubmit_date(Date submit_date) {
+    this.submit_date = submit_date;
+  }
+
+  public Integer getDepartment_id() {
+    return department_id;
+  }
+
+  public void setDepartment_id(Integer department_id) {
+    this.department_id = department_id;
+  }
 
   public String getReason() {
     return reason;

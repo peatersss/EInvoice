@@ -8,31 +8,29 @@ import java.util.Date;
 @Repository
 public class Lgrecord {
 
-  private long recordId;
-  private long departmentId;
+  private Integer recordId;
+  private Integer departmentId;
   private Date createDate;
   private String ip;
   private String browser;
   private String os;
 
 
-  public long getRecordId() {
+  public Integer getRecordId() {
     return recordId;
   }
 
-  public void setRecordId(long recordId) {
+  public void setRecordId(Integer recordId) {
     this.recordId = recordId;
   }
 
-
-  public long getDepartmentId() {
+  public Integer getDepartmentId() {
     return departmentId;
   }
 
-  public void setDepartmentId(long departmentId) {
+  public void setDepartmentId(Integer departmentId) {
     this.departmentId = departmentId;
   }
-
 
   public Date getCreateDate() {
     return createDate;

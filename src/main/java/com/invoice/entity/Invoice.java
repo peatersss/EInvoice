@@ -8,7 +8,7 @@ import java.util.Date;
 @Repository
 public class Invoice {
 
-  private long invoice_id;
+  private Integer invoice_id;
   private String invoice_code;//发票代码
   private String invoice_number;//发票号码
   private Date invoice_date;//创建日期
@@ -18,7 +18,7 @@ public class Invoice {
   private String seller_code;
   private String service_name;//服务名称
   private double price;
-  private long amount;
+  private Integer amount;
   private double tax_rate;
   private double tax_amount;
   private Integer invoice_status;
@@ -53,13 +53,7 @@ public class Invoice {
     this.auditing_id = auditing_id;
   }
 
-  public long getInvoice_id() {
-    return invoice_id;
-  }
 
-  public void setInvoice_id(long invoice_id) {
-    this.invoice_id = invoice_id;
-  }
 
   public String getInvoice_code() {
     return invoice_code;
@@ -133,11 +127,19 @@ public class Invoice {
     this.price = price;
   }
 
-  public long getAmount() {
+  public Integer getInvoice_id() {
+    return invoice_id;
+  }
+
+  public void setInvoice_id(Integer invoice_id) {
+    this.invoice_id = invoice_id;
+  }
+
+  public Integer getAmount() {
     return amount;
   }
 
-  public void setAmount(long amount) {
+  public void setAmount(Integer amount) {
     this.amount = amount;
   }
 
