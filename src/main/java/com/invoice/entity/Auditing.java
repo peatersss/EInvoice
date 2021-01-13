@@ -2,59 +2,54 @@ package com.invoice.entity;
 
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.Date;
 
 @Repository
 public class Auditing {
 
-  private long auditingId;
+  private Integer auditing_id;
 
-  private Date auditingDate;
-  private long departmentId;
-  private long status;
+  private Date auditing_date;
+  private Integer department_id;
+  private Integer status;
   private String comment;
 
-
-  public long getAuditingId() {
-    return auditingId;
+  public Integer getAuditing_id() {
+    return auditing_id;
   }
 
-  public void setAuditingId(long auditingId) {
-    this.auditingId = auditingId;
+  public void setAuditing_id(Integer auditing_id) {
+    this.auditing_id = auditing_id;
   }
 
-
-
-
-
-  public Date getAuditingDate() {
-    return auditingDate;
+  public Integer getDepartment_id() {
+    return department_id;
   }
 
-  public void setAuditingDate(Date auditingDate) {
-    this.auditingDate = auditingDate;
+  public void setDepartment_id(Integer department_id) {
+    this.department_id = department_id;
   }
 
-
-  public long getDepartmentId() {
-    return departmentId;
+  public Date getAuditing_date() {
+    return auditing_date;
   }
 
-  public void setDepartmentId(long departmentId) {
-    this.departmentId = departmentId;
+  public void setAuditing_date(Date auditing_date) {
+    this.auditing_date = auditing_date;
   }
 
 
-  public long getStatus() {
+
+
+  public Integer getStatus() {
     return status;
   }
 
-  public void setStatus(long status) {
+  public void setStatus(Integer status) {
     this.status = status;
   }
-
 
   public String getComment() {
     return comment;
@@ -63,5 +58,4 @@ public class Auditing {
   public void setComment(String comment) {
     this.comment = comment;
   }
-
 }

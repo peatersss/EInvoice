@@ -2,8 +2,9 @@ package com.invoice.service;
 
 import com.invoice.entity.Submit;
 
+import java.util.List;
+
 public interface SubmitService {
-    void addSubmitRecord(Submit submit);
-    Submit getSubmitByDepartmentId(Integer department_id);
-    void deleteSubmitById(Integer submit_id);
+    Integer addSubmit(Submit submit);
+    List<Submit> getAllSubmitByDepartment(Integer department_id);
 }

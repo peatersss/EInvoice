@@ -12,7 +12,6 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CompanyMapper companyMapper;
 
-
     @Override
     public Company getCompanyByUserName(String username) {
         return null;

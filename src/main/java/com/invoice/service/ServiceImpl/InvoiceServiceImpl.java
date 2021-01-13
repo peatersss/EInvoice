@@ -16,4 +16,27 @@ public class InvoiceServiceImpl implements InvoiceService {
     public List<Invoice> getAllInvoice(Integer status) {
         return invoiceMapper.getAllInvoice(status);
     }
+
+    @Override
+    public List<Invoice> getSubmitInvoiceByDepartmentId(Integer department_id, Integer submit_id) {
+        return invoiceMapper.getSubmitInvoiceByDepartmentId(department_id,submit_id);
+    }
+
+
+    @Override
+    public List<Invoice> getAllAuditingInvoiceByDepartmentId(Integer department_id,Integer auditing_id) {
+        return invoiceMapper.getAllAuditingInvoiceByDepartmentId(department_id,auditing_id);
+    }
+
+    @Override
+    public List<Invoice> getAllNotSubmit(Integer department_id) {
+        return invoiceMapper.getAllNotSubmit(department_id);
+    }
+
+    @Override
+    public Invoice getInvoiceById(Integer invoice_id) {
+        return invoiceMapper.getInvoiceById(invoice_id);
+    }
+
+
 }
