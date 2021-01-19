@@ -23,5 +23,14 @@ public class SubmitServiceImpl implements SubmitService {
         return submitMapper.getAllSubmitByDepartment(department_id);
     }
 
+    @Override
+    public List<Submit> getAllSubmit() {
+        return submitMapper.getAllSubmit();
+    }
+
+    @Override
+    public Submit getSubmitById() {
+        return submitMapper.getSubmitById();    }
+
 
 }

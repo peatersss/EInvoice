@@ -15,4 +15,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department getDepartmentByUserName(String username) {
         return departmentMapper.getDepartmentByUserName(username);
     }
+
+    @Override
+    public Department getDepartmentById(Integer department_id) {
+        return departmentMapper.getDepartmentById(department_id);
+    }
 }

@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface DepartmentMapper {
     @Select("select * from department where department_username=#{username}")
     Department getDepartmentByUserName(String username);
+    @Select("select * from department where department_id=#{department_id}")
+    Department getDepartmentById(Integer department_id);
 }
