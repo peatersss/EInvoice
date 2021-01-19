@@ -19,7 +19,7 @@ public interface InvoiceMapper {
     List<Invoice> getAllInvoice(Integer status);
 
 
-    @Select("select ei.* from invoice ei join submit on ei.submit_id=submit.submit_id where submit.department_id=#{department_id} and submit_id = #{submit_id}")
+    @Select("select ei.* from invoice ei join submit on ei.submit_id=submit.submit_id where submit.department_id=#{department_id} and ei.submit_id = #{submit_id}")
     List<Invoice> getSubmitInvoiceByDepartmentId(Integer department_id,Integer submit_id);
 
 

@@ -50,4 +50,15 @@ public class Department {
   public void setDepartment_password(String department_password) {
     this.department_password = department_password;
   }
+
+  @Override
+  public String toString() {
+    return "Department{" +
+            "department_id=" + department_id +
+            ", department_name='" + department_name + '\'' +
+            ", department_username='" + department_username + '\'' +
+            ", department_password='" + department_password + '\'' +
+            ", company_id=" + company_id +
+            '}';
+  }
 }

@@ -19,5 +19,8 @@ public interface SubmitMapper {
 
     @Delete("delete from submit where submit_id=#{submit_id}")
     void deleteSubmit(Integer submit_id);
-
+    @Select("select * from submit")
+    List<Submit> getAllSubmit();
+    @Select("select * from submit where submit_id=#{submit_id}")
+    Submit getSubmitById();
 }

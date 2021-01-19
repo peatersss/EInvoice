@@ -1,6 +1,8 @@
 package com.invoice.controller;
 
 import com.invoice.DemoApplication;
+import com.invoice.Result.Result;
+import com.invoice.Result.ResultFactory;
 import com.invoice.Util.IpUtil;
 import com.invoice.Util.JudgeUtill;
 import com.invoice.entity.Department;
@@ -33,28 +35,26 @@ public class DepartmentController {
     private LgrecordService lgrecordService;
     @Autowired
     private SubmitService submitService;
-    @GetMapping(value = "/login")
-    public String tologin(){
-        return "department/login";
-    }
+
+    //@GetMapping(value = "/login")
+    //public String tologin(){
+       // return "department/login";
+    //}
     @PostMapping(value = "/login")
     @ResponseBody
-    public Map<String,Object> dologin(HttpSession session, HttpServletRequest request, String username, String password) {
+    public Result dologin(String username, String password, HttpServletRequest request) {
 
         Department department=departmentService.getDepartmentByUserName(username);
         Map<String,Object> map=new HashMap<String,Object>();
         if(department==null){
-            map.put("code",400);
-            map.put("msg","该用户不存在");
-            return map;
+            return  ResultFactory.buildFailResult("该用户不存在");
         }
         if(!department.getDepartment_password().equals(password)){
-            map.put("code",400);
-            map.put("msg","账户或者密码输入错误");
-            return map;
+            return  ResultFactory.buildFailResult("账户或者密码输入错误");
         }
+        HttpSession session = request.getSession();
         session.setAttribute("department",department);
-        map.put("code",200);
+        //System.out.println((Department)request.getSession().getAttribute("department"));
         String ipadress= IpUtil.getIpAddr(request);
         String browser= JudgeUtill.whatBrower(request.getHeader("USER-AGENT"));
         String os=JudgeUtill.whatOS(request.getHeader("USER-AGENT"));
@@ -64,13 +64,14 @@ public class DepartmentController {
         lgrecord.setIp(ipadress);
         lgrecord.setDepartmentId(department.getDepartment_id());
         lgrecordService.insertLgrecord(lgrecord);
-        return map;
+        return ResultFactory.buildSuccessResult(null);
     }
     @GetMapping("/index")
-    public String toIndex(HttpSession session, Model model){
+    @ResponseBody
+    public Result toIndex(HttpServletRequest request ){
+        HttpSession session = request.getSession();
         Department department=(Department)session.getAttribute("department");
         List<Submit> submitList=submitService.getAllSubmitByDepartment(department.getDepartment_id());
-        model.addAttribute("submitList",submitList);
-        return "department/index";
+        return ResultFactory.buidResult(200,"成功",submitList);
     }
 }

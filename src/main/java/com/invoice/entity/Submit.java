@@ -13,6 +13,15 @@ public class Submit {
   private Integer department_id;
   private String reason;
   private Double sum;
+  private String departmentName;
+
+  public String getDepartmentName() {
+    return departmentName;
+  }
+
+  public void setDepartmentName(String departmentName) {
+    this.departmentName = departmentName;
+  }
 
   public Double getSum() {
     return sum;
