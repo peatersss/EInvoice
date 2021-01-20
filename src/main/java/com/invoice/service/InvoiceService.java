@@ -10,6 +10,9 @@ public interface InvoiceService {
     List<Invoice> getAllAuditingInvoiceByDepartmentId(Integer department_id,Integer auditing_id);
     List<Invoice> getAllNotSubmit(Integer department_id);
     Invoice getInvoiceById(Integer invoice_id);
+    Integer addInvoice(Invoice invoice);
+    void updateStatus1(Integer submit_id,Integer invoice_id);
+    void updateStatus2(Integer ivoice_status,Integer auditing_id,Integer invoice_id);
 /**
      //根据提交id查找对应的发票，用于部门和管理
 

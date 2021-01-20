@@ -4,6 +4,7 @@ package com.invoice.entity;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public class Invoice {
@@ -16,10 +17,18 @@ public class Invoice {
   private String buyer_code;
   private String seller_name;
   private String seller_code;
-  private String service_name;//服务名称
   private double price;
-  private Integer amount;
-  private double tax_rate;
+
+  public List<Detail> getDetailList() {
+    return detailList;
+  }
+
+  public void setDetailList(List<Detail> detailList) {
+    this.detailList = detailList;
+  }
+
+  private List<Detail> detailList;
+
   private double tax_amount;
   private Integer invoice_status;
   private String invoice_type;
@@ -27,15 +36,16 @@ public class Invoice {
   private Integer submit_id;
   private Integer auditing_id;
 
-  public String getFileUrl() {
-    return fileUrl;
+
+  private String file_url;
+
+  public String getFile_url() {
+    return file_url;
   }
 
-  public void setFileUrl(String fileUrl) {
-    this.fileUrl = fileUrl;
+  public void setFile_url(String file_url) {
+    this.file_url = file_url;
   }
-
-  private String fileUrl;
 
   public Integer getSubmit_id() {
     return submit_id;
@@ -111,13 +121,7 @@ public class Invoice {
     this.seller_code = seller_code;
   }
 
-  public String getService_name() {
-    return service_name;
-  }
 
-  public void setService_name(String service_name) {
-    this.service_name = service_name;
-  }
 
   public double getPrice() {
     return price;
@@ -135,21 +139,6 @@ public class Invoice {
     this.invoice_id = invoice_id;
   }
 
-  public Integer getAmount() {
-    return amount;
-  }
-
-  public void setAmount(Integer amount) {
-    this.amount = amount;
-  }
-
-  public double getTax_rate() {
-    return tax_rate;
-  }
-
-  public void setTax_rate(double tax_rate) {
-    this.tax_rate = tax_rate;
-  }
 
   public double getTax_amount() {
     return tax_amount;
@@ -194,17 +183,16 @@ public class Invoice {
             ", buyer_code='" + buyer_code + '\'' +
             ", seller_name='" + seller_name + '\'' +
             ", seller_code='" + seller_code + '\'' +
-            ", service_name='" + service_name + '\'' +
+
             ", price=" + price +
-            ", amount=" + amount +
-            ", tax_rate=" + tax_rate +
+
             ", tax_amount=" + tax_amount +
             ", invoice_status=" + invoice_status +
             ", invoice_type='" + invoice_type + '\'' +
             ", department_id=" + department_id +
             ", submit_id=" + submit_id +
             ", auditing_id=" + auditing_id +
-            ", fileUrl='" + fileUrl + '\'' +
+            ", fileUrl='" + file_url + '\'' +
             '}';
   }
 }

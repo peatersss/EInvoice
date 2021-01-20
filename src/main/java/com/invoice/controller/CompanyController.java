@@ -30,7 +30,7 @@ public class CompanyController {
     private DepartmentService departmentService;
     @PostMapping(value = "/login")
     @ResponseBody
-    public Result dologin(HttpSession session, Model model, @RequestParam("usr")String username, @RequestParam("pwd")String password) {
+    public Result dologin(HttpSession session, Model model, String username,String password) {
         Company company=companyService.getCompanyByUserName(username);
         Map<String,Object> map=new HashMap<String,Object>();
         if(company==null){

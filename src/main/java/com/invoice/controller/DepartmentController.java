@@ -5,6 +5,7 @@ import com.invoice.Result.Result;
 import com.invoice.Result.ResultFactory;
 import com.invoice.Util.IpUtil;
 import com.invoice.Util.JudgeUtill;
+import com.invoice.Util.JwtUtil;
 import com.invoice.entity.Department;
 import com.invoice.entity.Lgrecord;
 import com.invoice.entity.Submit;
@@ -42,8 +43,10 @@ public class DepartmentController {
     //}
     @PostMapping(value = "/login")
     @ResponseBody
-    public Result dologin(String username, String password, HttpServletRequest request) {
-
+    public Result dologin(@RequestBody Map<String, String> loginForm, HttpServletRequest request) {
+        String username = loginForm.get("username");
+        String password = loginForm.get("password");
+        System.out.println("进来了 "+username+password);
         Department department=departmentService.getDepartmentByUserName(username);
         Map<String,Object> map=new HashMap<String,Object>();
         if(department==null){
@@ -51,6 +54,10 @@ public class DepartmentController {
         }
         if(!department.getDepartment_password().equals(password)){
             return  ResultFactory.buildFailResult("账户或者密码输入错误");
+        }
+        String token = JwtUtil.sign(username, password);
+        if (token == null) {
+            return ResultFactory.buildFailResult("用户token已失效");
         }
         HttpSession session = request.getSession();
         session.setAttribute("department",department);
@@ -64,7 +71,7 @@ public class DepartmentController {
         lgrecord.setIp(ipadress);
         lgrecord.setDepartmentId(department.getDepartment_id());
         lgrecordService.insertLgrecord(lgrecord);
-        return ResultFactory.buildSuccessResult(null);
+        return ResultFactory.buildSuccessResult(token);
     }
     @GetMapping("/index")
     @ResponseBody

@@ -1,10 +1,8 @@
 package com.invoice.mapper;
 
 import com.invoice.entity.Invoice;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,10 +31,12 @@ public interface InvoiceMapper {
     @Select("select * from invoice where invoice_status=0 and department_id =#{department_id}")
     List<Invoice> getAllNotSubmit(Integer department_id);
 
-    @Update("update invoice set invoice_status=#{status} where invoice_id=#{invoice_id}")
-    List<Invoice> updateStatus(Integer status,Integer invoice_id);
-
-    @Insert("insert into invoice(invoice_code, invoice_number, invoice_date, buyer_name, buyer_code, seller_name, seller_code, service_name, price, amount, tax_rate, tax_amount, invoice_status, invoice_type, department_id, submit_id, auditing_id, file_url) values (#{invoice_code}, #{invoice_number}, #{invoice_date}, #{buyer_name}, #{buyer_code}, #{seller_name}, #{seller_code}, #{service_name}, #{price}, #{amount}, #{tax_rate}, #{tax_amount}, #{invoice_status}, #{invoice_type}, #{department_id}, #{submit_id}, #{auditing_id}, #{file_url})")
-    void addInvoice(Invoice invoice);
+    @Update("update invoice set invoice_status=1 and submit_id=#{submit_id} where invoice_id=#{invoice_id}")
+    void updateStatus1(Integer submit_id,Integer invoice_id);
+    @Update("update invoice set invoice_status=#{invoice_status} and auditing_id=#{auditing_id} where invoice_id=#{invoice_id}")
+    void updateStatus2(Integer invoice_status,Integer auditing_id,Integer invoice_id);
+    @Insert("insert into invoice(invoice_code, invoice_number, invoice_date, buyer_name, buyer_code, seller_name, seller_code,  price,  tax_amount, invoice_status, invoice_type, department_id, submit_id, auditing_id, file_url) values (#{invoice_code}, #{invoice_number}, #{invoice_date}, #{buyer_name}, #{buyer_code}, #{seller_name}, #{seller_code},  #{price}, #{tax_amount}, #{invoice_status}, #{invoice_type}, #{department_id}, #{submit_id}, #{auditing_id}, #{file_url})")
+    @Options(useGeneratedKeys = true,keyProperty = "invoice_id")
+    Integer addInvoice(Invoice invoice);
 
 }

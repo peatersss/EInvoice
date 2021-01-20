@@ -38,5 +38,20 @@ public class InvoiceServiceImpl implements InvoiceService {
         return invoiceMapper.getInvoiceById(invoice_id);
     }
 
+    @Override
+    public Integer addInvoice(Invoice invoice) {
+        return invoiceMapper.addInvoice(invoice);
+    }
+
+    @Override
+    public void updateStatus1(Integer submit_id,Integer invoice_id){
+        invoiceMapper.updateStatus1(submit_id,invoice_id);
+    }
+
+    @Override
+    public void updateStatus2(Integer ivoice_status, Integer auditing_id, Integer invoice_id) {
+        invoiceMapper.updateStatus2(ivoice_status, auditing_id, invoice_id);
+    }
+
 
 }
